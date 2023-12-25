@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
+
 import { getCategories, getRestaurants } from "../../services/apiRestaurant";
 import { IMG_CDN_URL } from "../../services/constant";
-import { Link } from "react-router-dom";
+import Spinner from "../../ui/Spinner";
 
 function Categories() {
   // var settings = {
@@ -12,6 +14,9 @@ function Categories() {
   //   slidesToShow: 5,
   //   slidesToScroll: 3,
   // };
+
+  const [category, setCategory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const options = {
     loop: true,
@@ -33,11 +38,12 @@ function Categories() {
     },
   };
 
-  const [category, setCategory] = useState([]);
   useEffect(() => {
     async function getCategory() {
+      setIsLoading(true);
       const data = await getCategories();
       setCategory(data);
+      setIsLoading(false);
       return data;
     }
     getCategory();
@@ -52,7 +58,9 @@ function Categories() {
         <h2>Popular Categories</h2>
         <p>Cum doctus civibus efficiantur imperdiet deterruisset</p>
       </div>
-      {category.length > 0 && (
+
+      {isLoading && <Spinner />}
+      {!isLoading && (
         <OwlCarousel
           className="owl-carousel owl-theme categories_carousel"
           {...options}

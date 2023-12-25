@@ -8,7 +8,7 @@ import Location from "./Location";
 
 function HomeLayout() {
   const position = useSelector((state) => state.user.position);
-  console.log(position);
+
   return position === "" ? (
     <Location />
   ) : (
