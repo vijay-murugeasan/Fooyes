@@ -39,37 +39,6 @@ function Banner({ restaurant }) {
                   Get directions
                 </a>
               </div>
-              <div className="col-xl-8 col-lg-7 col-md-6 position-relative">
-                <div className="buttons clearfix">
-                  <span className="magnific-gallery">
-                    <a
-                      href="/img/detail_1.jpg"
-                      className="btn_hero"
-                      title="Photo title"
-                      data-effect="mfp-zoom-in"
-                    >
-                      <i className="icon_image"></i>View photos
-                    </a>
-                    <a
-                      href="/img/detail_2.jpg"
-                      title="Photo title"
-                      data-effect="mfp-zoom-in"
-                    >
-                      {" "}
-                    </a>
-                    <a
-                      href="/img/detail_3.jpg"
-                      title="Photo title"
-                      data-effect="mfp-zoom-in"
-                    >
-                      {" "}
-                    </a>
-                  </span>
-                  <a href="#0" className="btn_hero wishlist">
-                    <i className="icon_heart"></i>Wishlist
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>

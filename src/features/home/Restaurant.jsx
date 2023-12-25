@@ -1,30 +1,51 @@
 // import PlaceHolder from "../../assets/img/location_list_placeholder.png";
 
 import { Link } from "react-router-dom";
+import { IMG_CDN_URL } from "../../services/constant";
 
-function Restaurant(items) {
-  const { offer, rating, name, price, address, category, img } = items.item;
+function Restaurant({ item }) {
+  console.log(item);
+  const {
+    id,
+    cloudinaryImageId,
+    areaName,
+    avgRatingString,
+    aggregatedDiscountInfoV3,
+    name,
+    cuisines,
+    sla,
+  } = item.info;
 
   return (
     <li>
-      <Link to="/restaurants">
+      <Link to={`/restaurant/${id}`}>
         <figure>
-          <img src={img} alt="" className="lazy" width="350" height="233" />
+          <img
+            src={IMG_CDN_URL + cloudinaryImageId}
+            alt=""
+            className="lazy"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+          />
         </figure>
-        {rating && (
+        {avgRatingString && (
           <div className="score">
-            <strong>{rating} </strong>
+            <strong>{avgRatingString} </strong>
           </div>
         )}
-        {category && <em>{category} </em>}
+        {cuisines && <em>{cuisines[0]} </em>}
         {name && <h3>{name}</h3>}
-        {address && <small>{address} </small>}
+        {areaName && <small>{areaName} </small>}
         <ul>
           <li>
-            <span className="ribbon off">{`-${offer}%`} </span>
+            {aggregatedDiscountInfoV3 && (
+              <span className="ribbon off">
+                {aggregatedDiscountInfoV3.header +
+                  " " +
+                  aggregatedDiscountInfoV3.subHeader}
+              </span>
+            )}
           </li>
-          {/* <li>${price}</li> */}
-          <li>{`Average price $ ${price}`}</li>
+          <li>{sla.slaString}</li>
         </ul>
       </Link>
     </li>

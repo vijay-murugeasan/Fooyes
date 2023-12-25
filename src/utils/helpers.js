@@ -4,3 +4,7 @@ export function formatCurrency(value) {
         currency: "INR",
     }).format(value / 100);
 }
+
+export function handlePreventDefault(e) {
+    e.preventDefault();
+}

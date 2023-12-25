@@ -2,7 +2,7 @@ import Logo from "./Logo";
 import LogoImg from "/img/logo.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import HeaderCart from "./HeaderCart";
+import HeaderCart from "../features/cart/HeaderCart";
 
 function Header() {
   const [scrollTopData, setScrollTopData] = useState("");
@@ -40,7 +40,13 @@ function Header() {
         </Link>
         <nav className={`main-menu ${mobileNav ? "show" : ""}`}>
           <div id="header_menu">
-            <Link className="open_close" onClick={() => setMobileNav(false)}>
+            <Link
+              className="open_close"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileNav(false);
+              }}
+            >
               <i className="icon_close"></i>
               <span>Menu </span>
             </Link>

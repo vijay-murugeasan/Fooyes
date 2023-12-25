@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import DeliveryBanner from "./DeliveryBanner";
 import Restaurant from "./Restaurant";
+import { useEffect, useState } from "react";
+import { getRestaurants } from "../../services/apiRestaurant";
 
 const data = {
   Restaurants: [
@@ -68,6 +70,16 @@ const data = {
 };
 
 function Restaurants() {
+  const [restaurants, setRestaurants] = useState([]);
+  useEffect(() => {
+    async function getRes() {
+      const data = await getRestaurants();
+      setRestaurants(data);
+      return data;
+    }
+
+    getRes();
+  }, []);
   return (
     <div className="bg_gray">
       <div className="container margin_60_40">
@@ -83,20 +95,24 @@ function Restaurants() {
           <div className="col-lg-6">
             <div className="list_home">
               <ul>
-                {data.Restaurants.length > 0 &&
-                  data.Restaurants.slice(0, 3).map((items) => (
-                    <Restaurant item={items} key={items.id} />
-                  ))}
+                {restaurants.length > 0 &&
+                  restaurants
+                    .slice(0, 3)
+                    .map((items) => (
+                      <Restaurant item={items} key={items.info.id} />
+                    ))}
               </ul>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="list_home">
               <ul>
-                {data.Restaurants.length > 0 &&
-                  data.Restaurants.slice(3, 6).map((items) => (
-                    <Restaurant item={items} key={items.id} />
-                  ))}
+                {restaurants.length > 0 &&
+                  restaurants
+                    .slice(3, 6)
+                    .map((items) => (
+                      <Restaurant item={items} key={items.info.id} />
+                    ))}
               </ul>
             </div>
           </div>

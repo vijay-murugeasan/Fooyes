@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 function Header() {
   const address = useSelector((state) => state.user.address);
   const addressArr = address.split(",");
-  const formattedAddress = addressArr.slice(0, addressArr.length - 2).join(",");
+  const formattedAddress = addressArr.slice(0, addressArr.length - 1).join(",");
   return (
     <div className="page_header element_to_stick">
       <div className="container">
