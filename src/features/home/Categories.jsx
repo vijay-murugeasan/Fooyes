@@ -16,7 +16,7 @@ function Categories() {
   // };
 
   const [category, setCategory] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const options = {
     loop: true,
@@ -48,7 +48,7 @@ function Categories() {
     }
     getCategory();
   }, []);
-
+  console.log("cate-load", isLoading);
   return (
     <div className="container margin_30_60">
       <div className="main_title center">
@@ -66,29 +66,30 @@ function Categories() {
           {...options}
           margin={4}
         >
-          {category.map((item) => {
-            return (
-              <div
-                className="item_version_2"
-                style={{ padding: "10px" }}
-                key={item.id}
-              >
-                <Link onClick={(e) => e.preventDefault()}>
-                  <figure style={{ border: "2px solid" }}>
-                    <span>{item.count}</span>
-                    <img
-                      src={IMG_CDN_URL + item.imageId}
-                      data-src="img/home_cat_pizza.jpg"
-                      alt=""
-                      className="owl-lazy"
-                      width="350"
-                      height="450"
-                    />
-                  </figure>
-                </Link>
-              </div>
-            );
-          })}
+          {category.length > 0 &&
+            category.map((item) => {
+              return (
+                <div
+                  className="item_version_2"
+                  style={{ padding: "10px" }}
+                  key={item.id}
+                >
+                  <Link onClick={(e) => e.preventDefault()}>
+                    <figure style={{ border: "2px solid" }}>
+                      <span>{item.count}</span>
+                      <img
+                        src={IMG_CDN_URL + item.imageId}
+                        data-src="img/home_cat_pizza.jpg"
+                        alt=""
+                        className="owl-lazy"
+                        width="350"
+                        height="450"
+                      />
+                    </figure>
+                  </Link>
+                </div>
+              );
+            })}
         </OwlCarousel>
       )}
     </div>

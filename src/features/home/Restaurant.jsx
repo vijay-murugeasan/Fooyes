@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { IMG_CDN_URL } from "../../services/constant";
 
 function Restaurant({ item }) {
-  console.log(item);
+  // console.log(item);
   const {
     id,
     cloudinaryImageId,
