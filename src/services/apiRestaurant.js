@@ -46,9 +46,20 @@ export async function getCategories() {
 
         const json = await data.json();
 
-        let itemData = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info
-        // call the checkJsonData() function which return Swiggy Restaurant data
+        async function checkJsonData(jsonData) {
+            for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+                // initialize checkData for Swiggy Restaurant data
+                console.log(json?.data?.cards[i]?.card)
+                if (json?.data?.cards[i]?.card?.card?.id === 'whats_on_your_mind') {
+                    console.log(json?.data?.cards[i]?.card?.card)
+                    const checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.info;
+                    return checkData;
+                }
+            }
+        }
 
+        // call the checkJsonData() function which return Swiggy Restaurant data
+        const itemData = await checkJsonData(json);
         console.log(itemData)
         return itemData
     } catch (error) {
