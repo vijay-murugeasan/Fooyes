@@ -13,6 +13,7 @@ function CartItems({ height, isShow, handleShow }) {
   const dispatch = useDispatch();
   const deliveryFee = 2000;
   const orderPath = pathname === "/order";
+  const url = orderPath ? "/thank-you" : "/order";
   const orderBtnText = orderPath ? "Order Now" : "Confirm Order";
   function handleIsShow(e) {
     e.preventDefault();
@@ -68,7 +69,7 @@ function CartItems({ height, isShow, handleShow }) {
           </ul>
 
           <div className="btn_1_mobile">
-            <Link to="/order" className="btn_1 gradient full-width mb_5">
+            <Link to={url} className="btn_1 gradient full-width mb_5">
               {orderBtnText}
             </Link>
             <div className="text-center">

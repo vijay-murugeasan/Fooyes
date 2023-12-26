@@ -18,6 +18,7 @@ import Spinner from "./ui/Spinner";
 import Error from "./ui/Error";
 import Order from "./features/order/Order";
 import SpinnerFullPage from "./ui/SpinnerFullPage";
+import ThankYou from "./features/order/ThankYou";
 
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -32,7 +33,7 @@ const Restaurants = lazy(() => import("./pages/Restaurants"));
 function App() {
   const position = useSelector((state) => state.user.position);
   const length = Object.keys(position).length;
-  console.log(length);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -85,6 +86,15 @@ function App() {
             </Suspense>
           ),
         },
+        {
+          path: "/thank-you",
+          element: (
+            <Suspense fallback={<SpinnerFullPage />}>
+              <ThankYou />
+            </Suspense>
+          ),
+        },
+
         {
           path: "*",
           element: <PageNotFound />,

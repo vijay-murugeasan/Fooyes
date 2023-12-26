@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 
-import { getCategories, getRestaurants } from "../../services/apiRestaurant";
+import { getCategories } from "../../services/apiRestaurant";
 import { IMG_CDN_URL } from "../../services/constant";
 import Spinner from "../../ui/Spinner";
 

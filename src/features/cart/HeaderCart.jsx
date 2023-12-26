@@ -31,7 +31,7 @@ function HeaderCart() {
       document.removeEventListener("click", checkIfClickedOutside);
     };
   }, []);
-  console.log(ref.current);
+
   return (
     <ul id="top_menu">
       <li>

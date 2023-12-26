@@ -1,4 +1,4 @@
-import { useRouteError } from "react-router-dom";
+import { Link, useRouteError } from "react-router-dom";
 
 function Error() {
   const error = useRouteError();
@@ -9,8 +9,11 @@ function Error() {
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-xl-7 col-lg-9">
-              <h1>Something went wrong 😢</h1>
-
+              <h1>We'll be back shortly 😢</h1>
+              <p>
+                We are fixing a temporary glitch. Sorry for the inconvenience.
+              </p>
+              <Link to="/" />
               {/* <p>{error.data || error.message}</p> */}
             </div>
           </div>

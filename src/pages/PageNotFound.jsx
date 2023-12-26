@@ -1,6 +1,9 @@
+import { useLocation } from "react-router-dom";
 import "../assets/css/error.css";
 
 function PageNotFound() {
+  const { pathname } = useLocation();
+  const path = pathname.replace("/", "");
   return (
     <main className="bg_gray">
       <div id="error_page">
@@ -17,7 +20,7 @@ function PageNotFound() {
                 />
               </figure>
               <p>
-                We are sorry, but the ____ you were looking for ______ exist.
+                We are sorry, but the {path} you were looking for doesn't exist.
               </p>
             </div>
           </div>
