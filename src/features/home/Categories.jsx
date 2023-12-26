@@ -42,6 +42,7 @@ function Categories() {
     async function getCategory() {
       setIsLoading(true);
       const data = await getCategories();
+      console.log(data);
       setCategory(data);
       setIsLoading(false);
       return data;
@@ -66,7 +67,7 @@ function Categories() {
           {...options}
           margin={4}
         >
-          {category.length > 0 &&
+          {category &&
             category.map((item) => {
               return (
                 <div

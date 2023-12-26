@@ -17,19 +17,15 @@ export async function getRestaurants() {
             for (let i = 0; i < jsonData?.data?.cards.length; i++) {
                 // initialize checkData for Swiggy Restaurant data
                 let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-
                 // if checkData is not undefined then return it
                 if (checkData !== undefined) {
                     return checkData;
                 }
-
             }
         }
-
         // call the checkJsonData() function which return Swiggy Restaurant data
         const resData = await checkJsonData(json);
-        console.log(resData)
+        // console.log(resData)
         return resData
     } catch (error) {
         console.log(error);
@@ -49,11 +45,9 @@ export async function getCategories() {
         async function checkJsonData(jsonData) {
             for (let i = 0; i < jsonData?.data?.cards.length; i++) {
                 // initialize checkData for Swiggy Restaurant data
-                console.log(json?.data?.cards[i]?.card)
                 if (json?.data?.cards[i]?.card?.card?.id === 'whats_on_your_mind') {
-                    console.log(json?.data?.cards[i]?.card?.card)
                     const checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.info;
-                    return checkData;
+                    return (checkData !== undefined) ? checkData : [];
                 }
             }
         }
