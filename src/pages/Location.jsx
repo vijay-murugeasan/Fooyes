@@ -1,6 +1,6 @@
+import AutoCompleteLocation from "./AutoCompleteLocation";
 import "../assets/css/order-sign_up.css";
 
-import AutoCompleteLocation from "./AutoCompleteLocation";
 function Location() {
   return (
     <div id="register_bg">

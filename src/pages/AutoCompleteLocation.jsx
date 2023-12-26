@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePosition } from "../services/userSlice";
 import { place_ID, search_API_URL } from "../services/constant";
@@ -9,8 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 function AutocompleteLocation() {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+  const IsMobile = window.screen.width < 800;
 
   const [myOptions, setMyOptions] = useState([]);
   const [select, setSelect] = useState([]);
@@ -124,11 +123,11 @@ function AutocompleteLocation() {
           <Link
             disabled={isLoadingAddress}
             onClick={handleFetchAddress}
-            className="btn_1 medium "
+            className={`btn_1 small`}
             type="button"
             style={{ height: "-webkit-fill-available" }}
           >
-            Locate Me
+            <i className="icon_pin" style={{ paddingTop: "12px" }}></i>
           </Link>
         </div>
       </div>
