@@ -17,8 +17,8 @@ function HeaderCartItems({ cart, setShowCart }) {
                 <span>{`${item.quantity}x ${item.name}`} </span>
                 {formatCurrency(item.totalPrice)}
               </strong>
-              <Link
-                to="/deleteItem"
+              <a
+                href="/deleteItem"
                 className="action"
                 onClick={(e) => {
                   e.preventDefault();
@@ -26,7 +26,7 @@ function HeaderCartItems({ cart, setShowCart }) {
                 }}
               >
                 <i className="icon_trash_alt"></i>
-              </Link>
+              </a>
             </li>
           );
         })}

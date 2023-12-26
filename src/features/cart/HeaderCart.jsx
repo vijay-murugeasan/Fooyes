@@ -1,27 +1,41 @@
-import ThumbPlaceHolder from "/img/menu-thumb-placeholder.jpg";
-import MenuThumb from "/img/menu-thumb-1.jpg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteItem, getCart, getTotalCartPrice } from "./CartSlice";
-import { formatCurrency } from "../../utils/helpers";
+import { useSelector } from "react-redux";
+import { getCart } from "./CartSlice";
 import HeaderCartItems from "./HeaderCartItems";
 import EmptyCart from "./EmptyCart";
 
 function HeaderCart() {
   const cart = useSelector(getCart);
   const [showCart, setShowCart] = useState(false);
-  const totalCartItemPrice = useSelector(getTotalCartPrice);
-  const dispatch = useDispatch();
+
+  const ref = useRef();
 
   function handleShowCart(e) {
     e.preventDefault();
     setShowCart((showCart) => !showCart);
   }
+
+  useEffect(() => {
+    function onClose() {
+      setShowCart(false);
+    }
+
+    const checkIfClickedOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener("click", checkIfClickedOutside);
+    return () => {
+      document.removeEventListener("click", checkIfClickedOutside);
+    };
+  }, []);
+  console.log(ref.current);
   return (
     <ul id="top_menu">
       <li>
-        <div className="dropdown dropdown-cart">
+        <div className="dropdown dropdown-cart" ref={ref}>
           <Link
             className={`cart_bt ${showCart && "show"}`}
             onClick={handleShowCart}
@@ -36,6 +50,7 @@ function HeaderCart() {
                 inset: "0px 0px auto auto",
                 margin: "0px",
                 transform: "translate3d(-210px, 30.4px, 0px)",
+                width: "260px",
               }}
             >
               {cart.length > 0 && (
@@ -47,7 +62,6 @@ function HeaderCart() {
             </div>
           )}
         </div>
-        {/* dropdown-cart */}
       </li>
     </ul>
   );

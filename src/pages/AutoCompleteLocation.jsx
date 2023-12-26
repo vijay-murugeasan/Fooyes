@@ -125,9 +125,9 @@ function AutocompleteLocation() {
             onClick={handleFetchAddress}
             className={`btn_1 small`}
             type="button"
-            style={{ height: "-webkit-fill-available" }}
+            style={{ height: "-webkit-fill-available", paddingTop: "12px" }}
           >
-            <i className="icon_pin" style={{ paddingTop: "12px" }}></i>
+            <i className="icon_pin"></i>
           </Link>
         </div>
       </div>
