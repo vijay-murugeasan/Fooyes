@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import { updatePosition } from "../services/userSlice";
-import { place_ID, search_API_URL } from "../services/constant";
 import { Link, useNavigation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { updatePosition } from "../services/userSlice";
+import { place_ID, search_API_URL } from "../services/constant";
 import { fetchAddress } from "../services/userSlice";
+
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 function AutocompleteLocation() {
   const navigation = useNavigation();

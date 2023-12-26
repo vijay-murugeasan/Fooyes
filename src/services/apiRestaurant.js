@@ -54,7 +54,7 @@ export async function getCategories() {
 
         // call the checkJsonData() function which return Swiggy Restaurant data
         const itemData = await checkJsonData(json);
-        console.log(itemData)
+        // console.log(itemData)
         return itemData
     } catch (error) {
         console.log(error);

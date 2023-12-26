@@ -18,6 +18,7 @@ export default function Restaurant() {
   const cart = useSelector(getCart);
   const [restaurant, menuItems] = UseRestaurant(id);
   const [height, setHeight] = useState(null);
+
   return !restaurant ? (
     <SpinnerFullPage />
   ) : (

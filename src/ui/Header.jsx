@@ -34,7 +34,13 @@ function Header() {
         </div>
         <div className={`layer ${mobileNav ? "layer-is-visible" : ""}`}></div>
         <HeaderCart />
-        <Link className="open_close" onClick={() => setMobileNav(true)}>
+        <Link
+          className="open_close"
+          onClick={(e) => {
+            e.preventDefault();
+            setMobileNav(true);
+          }}
+        >
           <i className="icon_menu"></i>
           <span>Menu </span>
         </Link>

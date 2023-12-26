@@ -3,27 +3,29 @@ import "../assets/css/order-sign_up.css";
 import AutoCompleteLocation from "./AutoCompleteLocation";
 function Location() {
   return (
-    <div id="register">
-      <aside>
-        <figure>
-          <a href="index.html">
-            <img src="/img/logo_sticky.svg" width="140" height="35" alt="" />
-          </a>
-        </figure>
-        <div className="access_social">
-          <h3>Order food from favourite restaurants near you.</h3>
-        </div>
-        <div className="divider"></div>
+    <div id="register_bg">
+      <div id="register">
+        <aside>
+          <figure>
+            <a href="/">
+              <img src="/img/logo_sticky.svg" width="140" height="35" alt="" />
+            </a>
+          </figure>
+          <div className="access_social">
+            <h3>Order food from favourite restaurants near you.</h3>
+          </div>
+          <div className="divider"></div>
 
-        <AutoCompleteLocation></AutoCompleteLocation>
+          <AutoCompleteLocation></AutoCompleteLocation>
 
-        <h5>POPULAR CITIES IN INDIA</h5>
-        <p>
-          Ahmedabad, Bangalore, Chennai, Delhi, Gurgaon, Hyderabad, Kolkata,
-          Mumbai, Pune & more.
-        </p>
-        <div className="copy">© 2024 FooYes </div>
-      </aside>
+          <h5>POPULAR CITIES IN INDIA</h5>
+          <p>
+            Ahmedabad, Bangalore, Chennai, Delhi, Gurgaon, Hyderabad, Kolkata,
+            Mumbai, Pune & more.
+          </p>
+          <div className="copy">© 2024 FooYes </div>
+        </aside>
+      </div>
     </div>
   );
 }

@@ -3,16 +3,18 @@ import {
   Navigate,
   RouterProvider,
   createBrowserRouter,
+  useRoutes,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 // import Home from "./pages/Home";
 // import Contact from "./pages/Contact";
-// import PageNotFound from "./pages/PageNotFound";
-// import Restaurant from "./pages/Restaurant";
 
-import { loader as restaurantLoader } from "./pages/Restaurants";
-import { action as getLocation } from "./pages/Location";
+import PageNotFound from "./pages/PageNotFound";
+
+import Restaurants, { loader as restaurantLoader } from "./pages/Restaurants";
+import Restaurant from "./pages/Restaurant";
+import Location, { action as getLocation } from "./pages/Location";
 import AppLayout from "./ui/AppLayout";
 import Spinner from "./ui/Spinner";
 import Error from "./ui/Error";
@@ -21,29 +23,13 @@ import SpinnerFullPage from "./ui/SpinnerFullPage";
 
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
-const PageNotFound = lazy(() => import("./pages/PageNotFound"));
-const Location = lazy(() => import("./pages/Location"));
-const Restaurant = lazy(() => import("./pages/Restaurant"));
-const Restaurants = lazy(() => import("./pages/Restaurants"));
 
-// import Help from "./pages/Help";
-// import Menu from "./pages/Menu";
-
-function App() {
-  const position = useSelector((state) => state.user.position);
-  const length = Object.keys(position).length;
+function Routes({ length }) {
   console.log(length);
   const router = createBrowserRouter([
     {
       path: "/",
-      element:
-        length > 0 ? (
-          <Suspense fallback={<SpinnerFullPage />}>
-            <AppLayout />
-          </Suspense>
-        ) : (
-          <Navigate to="/location" />
-        ),
+      element: length ? <AppLayout /> : <Navigate to="/location" />,
       children: [
         {
           path: "/",
@@ -79,11 +65,7 @@ function App() {
         },
         {
           path: "/order",
-          element: (
-            <Suspense fallback={<SpinnerFullPage />}>
-              <Order />
-            </Suspense>
-          ),
+          element: <Order />,
         },
         {
           path: "*",
@@ -93,18 +75,11 @@ function App() {
     },
     {
       path: "/location",
-      element:
-        length === 0 ? (
-          <Suspense fallback={<SpinnerFullPage />}>
-            <Location />
-          </Suspense>
-        ) : (
-          <Navigate to="/" />
-        ),
+      element: !length ? <Location /> : <Navigate to="/" />,
       action: getLocation,
     },
   ]);
   return <RouterProvider router={router} />;
 }
 
-export default App;
+export default Routes;

@@ -4,7 +4,7 @@ import Categories from "../features/home/Categories";
 import Restaurants from "../features/home/Restaurants";
 import StartOrder from "../features/home/StartOrder";
 import Location from "./Location";
-<link rel="stylesheet" href="../assets/css/home.css" />;
+import "../assets/css/home.css";
 
 function HomeLayout() {
   const position = useSelector((state) => state.user.position);

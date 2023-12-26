@@ -42,14 +42,14 @@ function Categories() {
     async function getCategory() {
       setIsLoading(true);
       const data = await getCategories();
-      console.log(data);
+      // console.log(data);
       setCategory(data);
       setIsLoading(false);
       return data;
     }
     getCategory();
   }, []);
-  console.log("cate-load", isLoading);
+  // console.log("cate-load", isLoading);
   return (
     <div className="container margin_30_60">
       <div className="main_title center">
