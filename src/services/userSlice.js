@@ -21,6 +21,10 @@ export const fetchAddress = createAsyncThunk(
     const addressObj = await getAddress(position);
     const address = `${addressObj?.locality}, ${addressObj?.city} ${addressObj?.postcode}, ${addressObj?.countryName}`;
 
+    window.sessionStorage.setItem("position", JSON.stringify(position));
+    window.sessionStorage.setItem("address", JSON.stringify(address));
+
+    console.log('session')
     // 3) Then we return an object with the data that we are interested in.
     // Payload of the FULFILLED state
     return { position, address };

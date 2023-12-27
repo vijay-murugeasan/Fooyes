@@ -1,4 +1,4 @@
-import "../assets/css/help.css";
+// import "../assets/css/help.css";
 
 function Help() {
   return (

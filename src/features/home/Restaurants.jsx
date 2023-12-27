@@ -4,27 +4,25 @@ import { getRestaurants } from "../../services/apiRestaurant";
 import DeliveryBanner from "./DeliveryBanner";
 import Spinner from "../../ui/Spinner";
 import Restaurant from "./Restaurant";
-import { useSelector } from "react-redux";
 
 function Restaurants() {
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const position = useSelector((state) => state.user.position);
-  console.log(position);
+  // console.log(position);
   useEffect(() => {
     async function getRes() {
       setIsLoading(true);
-      const data = await getRestaurants(position);
-      console.log(data);
+      const data = await getRestaurants();
+      // console.log(data);
       setRestaurants(data);
       setIsLoading(false);
       return data;
     }
 
     getRes();
-  }, [position]);
+  }, []);
 
-  console.log(restaurants);
+  // console.log(restaurants);
   return (
     <div className="bg_gray">
       <div className="container margin_60_40">

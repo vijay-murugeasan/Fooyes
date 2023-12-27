@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import SpinnerFullPage from "./SpinnerFullPage";
+import ScrollToTop from "./ScrollToTop";
 
 const containerStyle = {
   "media (min-width: 768px)": {
@@ -19,6 +20,7 @@ function AppLayout() {
 
   return (
     <div>
+      <ScrollToTop />
       <Header />
       {isLoading && <SpinnerFullPage />}
       {!isLoading && <Outlet />}

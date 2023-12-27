@@ -31,7 +31,10 @@ const Restaurants = lazy(() => import("./pages/Restaurants"));
 // import Menu from "./pages/Menu";
 
 function App() {
-  const position = useSelector((state) => state.user.position);
+  const statePosition = useSelector((state) => state.user.position);
+  const sessionPosition = JSON.parse(window.sessionStorage.getItem("position"));
+  const position = sessionPosition || statePosition;
+
   const length = Object.keys(position).length;
 
   const router = createBrowserRouter([

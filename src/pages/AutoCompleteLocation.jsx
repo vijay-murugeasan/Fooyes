@@ -79,6 +79,8 @@ function AutocompleteLocation() {
           ? "Enter Valid Location"
           : "Enter Your Delivery Location";
       setError({ addressError: errorVal });
+    } else {
+      window.sessionStorage.setItem("position", position);
     }
   }
   // console.log(error);

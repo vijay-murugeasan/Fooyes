@@ -13,19 +13,13 @@ function RestaurantItem({ item }) {
     sla,
     veg,
   } = item;
-  // console.log(item);
-  // console.log("cuisines", cuisines);
-  // const { category, deliveryType, title, address, img } = item.item;
-  const delivery = "yes";
-  const takeaway = "no";
-  const deliveryType = "all";
-  const deliver = sla.serviceability === "SERVICEABLE" ?? "delivery";
   const deliveryTime = sla?.slaString;
   const foodType = veg ? "veg" : "nonVeg";
+  const cuisineCategory = cuisines.join(" ").replace(" ", "-").toLowerCase();
 
   return (
     <div
-      className={`col-xl-3 col-lg-4 col-md-4 col-sm-4 isotope-item ${foodType} `}
+      className={`col-xl-3 col-lg-4 col-md-4 col-sm-4 isotope-item ${id} ${foodType} ${cuisineCategory}`}
     >
       <div className="strip">
         <figure>

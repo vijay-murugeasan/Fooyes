@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
 import { swiggy_menu_api_URL, MENU_API, MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY, search_API_URL } from "./constant"
 // const RestaurantAPI = "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+function getPosition() {
+    const getPosition = window.sessionStorage.getItem("position");
+    const position = JSON.parse(getPosition)
+    const latitude = position["latitude"];
+    const longitude = position["longitude"];
+    const lat = getPosition != null ? (latitude) : null;
+    const lng = getPosition != null ? (longitude) : null;
+    return [lat, lng]
+}
 
 
 export async function getRestaurants() {
+    const [lat, lng] = getPosition()
+
+
     try {
         console.log('api call')
-        const data = await fetch(MENU_API);
-
+        const data = await fetch(MENU_API(lat, lng));
         if (!data.ok) throw Error();
 
         const json = await data.json();
@@ -34,9 +45,11 @@ export async function getRestaurants() {
 
 }
 export async function getCategories() {
+    const [lat, lng] = getPosition()
+
     try {
         console.log('api call for category')
-        const data = await fetch(MENU_API);
+        const data = await fetch(MENU_API(lat, lng));
 
         if (!data.ok) throw Error();
 
@@ -87,13 +100,14 @@ export const UseRestaurant = (resId) => {
     const [restaurant, setRestaurant] = useState(null); // use useState to store restaurant data
     const [menuItems, setMenuItems] = useState([]); // use useState to store restaurant Menu Item data
 
+    const [lat, lng] = getPosition()
     useEffect(() => {
         getRestaurantInfo(); // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
     }, []);
 
     async function getRestaurantInfo() {
         try {
-            const response = await fetch(swiggy_menu_api_URL + resId);
+            const response = await fetch(swiggy_menu_api_URL(lat, lng) + resId);
             if (!response.ok) {
                 const err = response.status;
                 throw new Error(err);

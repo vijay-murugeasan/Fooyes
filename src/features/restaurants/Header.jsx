@@ -1,9 +1,32 @@
 import { useSelector } from "react-redux";
 
-function Header() {
-  const address = useSelector((state) => state.user.address);
+function Header({
+  restaurants,
+  handleRestaurantData,
+  searchVal,
+  setSearchVal,
+}) {
+  const stateAddress = useSelector((state) => state.user.address);
+  const sessionAddress = JSON.parse(window.sessionStorage.getItem("address"));
+  const address = sessionAddress || stateAddress;
+
   const addressArr = address.split(",");
   const formattedAddress = addressArr.slice(0, addressArr.length - 1).join(",");
+
+  function handleSearchClick(e) {
+    setSearchVal(e.target.value);
+    const updateList = [...restaurants];
+    const resData = updateList;
+    if (searchVal === "") {
+      handleRestaurantData(restaurants);
+      return;
+    }
+    const filterBySearch = resData?.filter((item) =>
+      item.info.name.toLowerCase().includes(searchVal.toLowerCase())
+    );
+    console.log(filterBySearch);
+    handleRestaurantData(filterBySearch);
+  }
   return (
     <div className="page_header element_to_stick">
       <div className="container">
@@ -16,7 +39,9 @@ function Header() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Dishes, restaurants or cuisines"
+                placeholder="Restaurants or Cuisines"
+                onChange={handleSearchClick}
+                value={searchVal}
               />
               <button type="submit">
                 <i className="icon_search"></i>
