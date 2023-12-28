@@ -62,6 +62,7 @@ function AutocompleteLocation() {
     }
     // console.log(res?.data);
     setSelect(select);
+    console.log(select[0]);
     if (select.length > 0) return dispatch(updatePosition(select[0]));
   }
 
@@ -103,7 +104,7 @@ function AutocompleteLocation() {
             }
           }}
           onChange={(e, value) => {
-            //   console.log(value);
+            // console.log(value);
             getGeoCode(value?.id);
           }}
           getOptionLabel={(option) =>

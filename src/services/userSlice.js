@@ -47,6 +47,8 @@ const userSlice = createSlice({
       // console.log(action)
       state.position = { latitude: action.payload.label.lat, longitude: action.payload.label.lng };
       state.address = action.payload.address;
+      window.sessionStorage.setItem("position", JSON.stringify(state.position));
+      window.sessionStorage.setItem("address", JSON.stringify(state.address));
 
     },
   },

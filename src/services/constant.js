@@ -10,7 +10,7 @@ export const RESTAURANT_TYPE_KEY =
 // const lng = '78.70747714418124'
 
 
-console.log('menu api')
+// console.log('menu api')
 export const search_API_URL = `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmisc%2Fplace-autocomplete%3Finput%3D`;
 export const place_ID = `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmisc%2Faddress-recommend%3Fplace_id%3D`
 export const MENU_API = (lat, lng) =>
