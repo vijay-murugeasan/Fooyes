@@ -10,10 +10,11 @@
   -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 }
-.PrivateNotchedOutline-root-1 {
-  height: 100% !important;
+#auto-complete-field div div div fieldset {
+  /* height: 100% !important; */
   top: 0px !important;
 }
+
 .box_order_form .head {
   text-align: left;
   padding: 15px 20px 12px 25px;

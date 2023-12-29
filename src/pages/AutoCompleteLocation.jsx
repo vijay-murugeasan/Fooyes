@@ -87,7 +87,7 @@ function AutocompleteLocation() {
   // console.log(error);
   return (
     <form onSubmit={handleSubmit}>
-      <div className="input-group mb-3">
+      <div className="input-group mb-3" id="auto-complete-field">
         <Autocomplete
           name="search"
           style={{ width: "75%" }}
