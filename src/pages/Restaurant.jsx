@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { UseRestaurant } from "../services/apiRestaurant";
-import { getCart } from "../features/cart/CartSlice";
+import { getCart } from "../services/redux/CartSlice";
 
 import SpinnerFullPage from "../ui/SpinnerFullPage";
 import Banner from "../features/restaurant/Banner";

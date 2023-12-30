@@ -7,11 +7,13 @@ import {
   deleteItem,
   getCurrentQuantityById,
   increaseItemQuantity,
-} from "../cart/CartSlice";
+} from "../../services/redux/CartSlice";
 function MenuItem({ itemCards, index }) {
   const dispatch = useDispatch();
-  const { id, name, price, description, imageId } = itemCards?.card?.info;
+  const { id, name, price, defaultPrice, description, imageId } =
+    itemCards?.card?.info;
 
+  const itemPrice = price ? price : defaultPrice;
   const currentQuantity = useSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
 
@@ -20,10 +22,10 @@ function MenuItem({ itemCards, index }) {
       id,
       name,
       quantity: 1,
-      unitPrice: price,
-      totalPrice: price * 1,
+      unitPrice: itemPrice,
+      totalPrice: itemPrice * 1,
     };
-    console.log(newItem);
+    // console.log(newItem);
     dispatch(addItem(newItem));
   }
 
@@ -49,12 +51,12 @@ function MenuItem({ itemCards, index }) {
           </a>
         </figure>
         <div className="flex-md-column">
-          <h4>{`${index}. ${name}`}</h4>
-          <p>Lorem ipsum dolor sit amet.</p>
+          <h4 title={`${index}. ${name}`}>{`${index}. ${name}`}</h4>
+          <p title={description}>{description}</p>
         </div>
       </td>
       <td className="col-md-2">
-        <strong>{price > 0 ? formatCurrency(price) : " "}</strong>
+        <strong>{itemPrice > 0 ? formatCurrency(itemPrice) : " "}</strong>
       </td>
       <td className="options col-md-4">
         <div
@@ -87,12 +89,13 @@ function MenuItem({ itemCards, index }) {
           {!isInCart && (
             <div className="col-md-6 text-center">
               <a
-                href="#/"
+                href="/addCart"
                 className="btn_1 gradient small"
                 onClick={(e) => {
                   e.preventDefault();
                   handleAddToCart();
                 }}
+                style={{ zIndex: 0 }}
               >
                 Add
               </a>

@@ -135,6 +135,7 @@ export const UseRestaurant = (resId) => {
 
                 const uniqueMenuItems = [];
                 menuItemsData.forEach((item) => {
+
                     if (!uniqueMenuItems.find((x) => x.id === item.id)) {
                         uniqueMenuItems.push(item);
                     }

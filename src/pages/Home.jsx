@@ -14,7 +14,7 @@ function HomeLayout() {
   ) : (
     <main>
       <Banner />
-      {window.screen.width >= 800 && <Categories />}
+      {window.screen.width >= 990 && <Categories />}
       <Restaurants />
       {/* <DeliveryBanner /> */}
       <StartOrder />

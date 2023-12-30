@@ -46,7 +46,7 @@ function App() {
             <AppLayout />
           </Suspense>
         ) : (
-          <Navigate to="/location" />
+          <Navigate to="/location" replace={true} />
         ),
       children: [
         {
@@ -112,7 +112,7 @@ function App() {
             <Location />
           </Suspense>
         ) : (
-          <Navigate to="/" />
+          <Navigate to="/" replace={true} />
         ),
       action: getLocation,
     },

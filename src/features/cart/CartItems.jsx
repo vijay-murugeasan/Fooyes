@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deleteItem, getCart, getTotalCartPrice } from "./CartSlice";
+import {
+  deleteItem,
+  getCart,
+  getTotalCartPrice,
+} from "../../services/redux/CartSlice";
 import { formatCurrency } from "../../utils/helpers";
 
 function CartItems({ height, isShow, handleShow }) {

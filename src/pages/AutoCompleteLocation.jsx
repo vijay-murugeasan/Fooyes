@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePosition } from "../services/userSlice";
+import { updatePosition } from "../services/redux/userSlice";
 import { place_ID, search_API_URL } from "../services/constant";
-import { fetchAddress } from "../services/userSlice";
+import { fetchAddress } from "../services/redux/userSlice";
 
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";

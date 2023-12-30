@@ -514,12 +514,22 @@ a.menu_item:hover h3 {
   margin: 0;
   font-size: 16px;
   font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .table.cart-list td p {
   margin: 0;
   font-size: 13px;
   font-size: 0.8125rem;
   color: #444;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .table.cart-list td figure {
   width: 60px;

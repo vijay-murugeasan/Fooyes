@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatCurrency } from "../../utils/helpers";
-import { deleteItem, getTotalCartPrice } from "./CartSlice";
+import { deleteItem, getTotalCartPrice } from "../../services/redux/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 function HeaderCartItems({ cart, setShowCart }) {

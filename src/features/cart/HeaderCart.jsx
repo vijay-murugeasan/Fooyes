@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getCart } from "./CartSlice";
+import { getCart } from "../../services/redux/CartSlice";
 import HeaderCartItems from "./HeaderCartItems";
 import EmptyCart from "./EmptyCart";
 
@@ -10,7 +10,7 @@ function HeaderCart() {
   const [showCart, setShowCart] = useState(false);
 
   const ref = useRef();
-
+  const IsMobile = window.screen.width < 990;
   function handleShowCart(e) {
     e.preventDefault();
     setShowCart((showCart) => !showCart);
@@ -37,7 +37,7 @@ function HeaderCart() {
       <li>
         <div className="dropdown dropdown-cart" ref={ref}>
           <Link
-            className={`cart_bt ${showCart && "show"}`}
+            className={`cart_bt ${showCart ? "show" : ""}`}
             onClick={handleShowCart}
           >
             {cart.length && <strong>{cart.length} </strong>}
