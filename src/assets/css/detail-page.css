@@ -492,6 +492,11 @@ a.menu_item:hover {
 a.menu_item:hover h3 {
   color: #e54750;
 }
+
+td.item-modal:hover h4 {
+  color: #e54750;
+}
+
 .table.cart-list {
   border-bottom: none;
   background-color: transparent;
