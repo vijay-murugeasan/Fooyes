@@ -32,7 +32,7 @@ function Restaurants() {
           </span>
           <h2>Top Rated Restaurants</h2>
           <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
-          <Link to="/restaurants">View All &rarr;</Link>
+          <Link to="/restaurant">View All &rarr;</Link>
         </div>
         <div className="row add_bottom_25">
           {isLoading && <Spinner />}

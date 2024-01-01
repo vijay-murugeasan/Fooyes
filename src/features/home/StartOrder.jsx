@@ -1,4 +1,5 @@
 // import lazyPlaceHolder100 from "../../assets/img/lazy-placeholder-100-100-white.png";
+import { Link } from "react-router-dom";
 import How1 from "/img/how_1.svg";
 import How2 from "/img/how_2.svg";
 import How3 from "/img/how_3.svg";
@@ -64,9 +65,12 @@ function StartOrder() {
               </div>
             </div>
             <p className="text-center mt-3 d-block d-lg-none">
-              <a href="#0" className="btn_1 medium gradient pulse_bt mt-2">
-                Register Now!
-              </a>
+              <Link
+                to="/restaurant"
+                className="btn_1 medium gradient pulse_bt mt-2"
+              >
+                Start Order
+              </Link>
             </p>
           </div>
           <div className="col-lg-5 offset-lg-1 align-self-center">
@@ -87,9 +91,12 @@ function StartOrder() {
                 cillum dolore eu fugiat _____ pariatur.
               </p>
               <p>
-                <a href="#0" className="btn_1 medium gradient pulse_bt mt-2">
-                  Register
-                </a>
+                <Link
+                  to="/restaurant"
+                  className="btn_1 medium gradient pulse_bt mt-2"
+                >
+                  Start Order
+                </Link>
               </p>
             </div>
           </div>

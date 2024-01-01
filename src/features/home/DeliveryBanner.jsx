@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function DeliveryBanner() {
   return (
     <div
@@ -13,9 +15,9 @@ function DeliveryBanner() {
           <small>FooYes Delivery </small>
           <h3>We Deliver to your ______</h3>
           <p>Enjoy a tasty food __ minutes!</p>
-          <a href="grid-listing-filterscol.html" className="btn_1 gradient">
+          <Link to="/restaurant" className="btn_1 gradient">
             Start Now!
-          </a>
+          </Link>
         </div>
       </div>
       {/* /wrapper  */}
