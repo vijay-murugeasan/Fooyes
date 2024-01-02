@@ -17,6 +17,9 @@ function TypeDelivery({ handleFilterKey, filterKeyValue, setOpen, open }) {
     },
   ];
 
+  function handleFilterChange(e) {
+    handleFilterKey(e.target.value);
+  }
   return (
     <div className="filters_full clearfix add_bottom_15">
       <div className="container">
@@ -32,7 +35,7 @@ function TypeDelivery({ handleFilterKey, filterKeyValue, setOpen, open }) {
                       name="type_d"
                       value={type.value}
                       id={type.value}
-                      onChange={() => handleFilterKey(type.filter)}
+                      onChange={handleFilterChange}
                       className={
                         filterKeyValue === type.filter ? "selected" : ""
                       }

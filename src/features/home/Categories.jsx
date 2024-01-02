@@ -70,11 +70,7 @@ function Categories() {
           {category &&
             category.map((item) => {
               return (
-                <div
-                  className="item_version_2"
-                  style={{ padding: "10px" }}
-                  key={item.id}
-                >
+                <div className="item_version_2" key={item.id}>
                   <Link onClick={(e) => e.preventDefault()}>
                     <figure style={{ border: "2px solid" }}>
                       <span>{item.count}</span>
