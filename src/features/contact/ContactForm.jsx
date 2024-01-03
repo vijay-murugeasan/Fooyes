@@ -37,15 +37,6 @@ function ContactForm() {
         </div>
         <div className="form-group">
           <input
-            className="form-control"
-            type="text"
-            id="verify_contact"
-            name="verify_contact"
-            placeholder="Are you human? 3 + 1 ="
-          />
-        </div>
-        <div className="form-group">
-          <input
             className="btn_1 gradient full-width"
             type="submit"
             value="Submit"

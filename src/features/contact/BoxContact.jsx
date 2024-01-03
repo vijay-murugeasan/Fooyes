@@ -4,22 +4,22 @@ const contactData = [
     icon: "icon_lifesaver",
     phone: "+94 423-23-221",
     email: "help@fooyes.com",
-    timing: "MON to FRI 9am-6pm ___ 9am-2pm",
+    timing: "MON to FRI 9am-6pm to 9am-2pm",
   },
   {
     title: "Address",
     icon: "icon_pin_alt",
     phone: "",
-    address: "6th Forrest Ray, London - 10001 UK ",
+    address: "6th Floor, Capital Towers,Nungambakkam, Chennai - 600006 IND ",
     email: "",
-    timing: "MON to FRI 9am-6pm ___ 9am-2pm",
+    timing: "MON to FRI 9am-6pm to 9am-2pm",
   },
   {
     title: "Submissions",
     icon: "icon_cloud-upload_alt",
     phone: "+94 423-23-221",
     email: "order@fooyes.com",
-    timing: "MON to FRI 9am-6pm ___ 9am-2pm",
+    timing: "MON to FRI 9am-6pm to 9am-2pm",
   },
 ];
 function BoxContact() {

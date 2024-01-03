@@ -16,7 +16,6 @@ function ContactBanner() {
               <p>A successful restaurant experience </p>
             </div>
           </div>
-          {/* <!-- /row --> */}
         </div>
       </div>
       <div className="wave gray hero"></div>
