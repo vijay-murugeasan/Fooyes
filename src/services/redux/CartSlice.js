@@ -1,6 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { cart: [], }
+const items =
+    window.sessionStorage.getItem("cartList") !== null
+        ? JSON.parse(window.sessionStorage.getItem("cartList"))
+        : [];
+
+console.log(items)
+// adding this function to prevent repeat code 
+const setCartListFunc = (items) => {
+    window.sessionStorage.setItem("cartList", JSON.stringify(items));
+    // localStorage.setItem("cartTotal", JSON.stringify(totalAmount));
+    // localStorage.setItem("cartQuantity", JSON.stringify(totalQuantity));
+};
+const initialState = { cart: items, }
 
 
 const cartSlice = createSlice({
@@ -8,25 +20,26 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addItem(state, action) {
-
             state.cart.push(action.payload)
+            setCartListFunc(state.cart.map((item) => item))
         },
         deleteItem(state, action) {
             // payload = pizzaId
             state.cart = state.cart.filter((item) => item.id !== action.payload);
+            setCartListFunc(state.cart.map((item) => item))
         },
         increaseItemQuantity(state, action) {
             // payload = pizzaId
-            console.log(action.payload)
-            const item = state.cart.find((item) => item.id === action.payload);
 
+            const item = state.cart.find((item) => item.id === action.payload);
+            setCartListFunc(state.cart.map((item) => item))
             item.quantity++;
             item.totalPrice = item.quantity * item.unitPrice;
         },
         decreaseItemQuantity(state, action) {
             // payload = pizzaId
             const item = state.cart.find((item) => item.id === action.payload);
-
+            setCartListFunc(state.cart.map((item) => item))
             item.quantity--;
             item.totalPrice = item.quantity * item.unitPrice;
 
@@ -34,6 +47,7 @@ const cartSlice = createSlice({
         },
         clearCart(state) {
             state.cart = [];
+            setCartListFunc(state.cart.map((item) => item))
         },
 
     }
