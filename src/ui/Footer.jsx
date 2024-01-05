@@ -1,7 +1,15 @@
+import { useLocation } from "react-router-dom";
+
 function Footer() {
+  const { pathname } = useLocation();
+  const pageIncludes = ["/home", "/contact"];
   return (
     <footer>
-      <div className="wave footer"></div>
+      <div
+        className={`wave footer  ${
+          !pageIncludes.includes(pathname) ? "gray" : ""
+        }`}
+      ></div>
       <div className="container margin_60_40 fix_mobile">
         <div className="row">
           <div className="col-lg-3 col-md-6">

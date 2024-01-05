@@ -1,22 +1,41 @@
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { clearCart } from "../../services/redux/CartSlice";
+import { useDispatch } from "react-redux";
 
-function OrderForm() {
+function OrderForm({ isSubmitted, setIsSubmitted }) {
+  const ref = useRef(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
+  const totalErrCount = Object.keys(errors).length;
   function onSubmit(data) {
-    alert("form Submitted Successfully");
+    console.log("form success");
+    dispatch(clearCart());
+    navigate("/thank-you");
   }
 
   function onError(errors) {
     console.log("Failed Validation!", errors);
   }
+
+  useEffect(() => {
+    totalErrCount > 0 && setIsSubmitted(false);
+    isSubmitted && ref.current.click();
+  }, [isSubmitted, totalErrCount]);
+
+  const isValidPhone = (str) => /^\+?[1-9][0-9]{7,12}$/.test(str);
+
+  const validateEmailRegex = (str) => /^\S+@\S+\.\S+$/.test(str);
+
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
       <div className="box_order_form">
@@ -28,68 +47,160 @@ function OrderForm() {
         <div className="main">
           <div className="row">
             <div className="col-md-6">
-              <Form.Group controlId="formFirstName">
-                <Form.Label>First name</Form.Label>
+              <Form.Group controlId="formName">
+                <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="First name"
-                  isInvalid={errors.firstName}
-                  {...register("firstName", {
-                    required: "This First name Field Is Required",
+                  placeholder="Name"
+                  isInvalid={errors.name}
+                  {...register("name", {
+                    required: "This Name Field Is Required",
                   })}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors?.firstName?.message}
+                  {errors?.name?.message}
                 </Form.Control.Feedback>
               </Form.Group>
             </div>
             <div className="col-md-6">
-              <Form.Group controlId="formLastName">
-                <Form.Label>Last name</Form.Label>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email Address</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Last name"
-                  isInvalid={errors.lastName}
-                  {...register("lastName", {
-                    required: "This Last Name Field Is Required",
+                  placeholder="Email Address"
+                  isInvalid={errors.email}
+                  {...register("email", {
+                    required: "This Email Field Is Required",
+                    validate: (value) =>
+                      validateEmailRegex(value) ||
+                      "Please give us your correct email",
                   })}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors?.lastName?.message}
+                  {errors?.email?.message}
                 </Form.Control.Feedback>
               </Form.Group>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <div className="form-group">
-                <label>Email Address </label>
-                <input className="form-control" placeholder="Email Address" />
-              </div>
+              <Form.Group controlId="formPhone">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Phone"
+                  isInvalid={errors.phone}
+                  {...register("phone", {
+                    required: "This Phone Field Is Required",
+                    validate: (value) =>
+                      isValidPhone(value) ||
+                      "Please give us your correct phone number.",
+                  })}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors?.phone?.message}
+                </Form.Control.Feedback>
+              </Form.Group>
             </div>
             <div className="col-md-6">
-              <div className="form-group">
-                <label>Phone </label>
-                <input className="form-control" placeholder="Phone" />
-              </div>
+              <Form.Group controlId="formLocality">
+                <Form.Label>Locality</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Locality"
+                  isInvalid={errors.locality}
+                  {...register("locality", {
+                    required: "This Locality Field Is Required",
+                  })}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors?.locality?.message}
+                </Form.Control.Feedback>
+              </Form.Group>
             </div>
           </div>
-          <div className="form-group">
-            <label>Full Address </label>
-            <input className="form-control" placeholder="Full Address" />
+          <div className="row mb-1">
+            <Form.Group controlId="formAreaStreet">
+              <Form.Label>Area and Street</Form.Label>
+              <Form.Control
+                as="textarea"
+                placeholder="Area and Street"
+                isInvalid={errors.areaStreet}
+                {...register("areaStreet", {
+                  required: "This Area and Street Field Is Required",
+                })}
+                style={{ height: "75px" }}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors?.areaStreet?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <div className="form-group">
-                <label>City </label>
-                <input className="form-control" placeholder="City" />
-              </div>
+              <Form.Group controlId="formLandMark">
+                <Form.Label>LandMark</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="LandMark"
+                  isInvalid={errors.landMark}
+                  {...register("landMark")}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors?.landMark?.message}
+                </Form.Control.Feedback>
+              </Form.Group>
             </div>
-            <div className="col-md-3">
-              <div className="form-group">
-                <label>Postal Code </label>
-                <input className="form-control" placeholder="0123" />
-              </div>
+            <div className="col-md-6">
+              <Form.Group controlId="formState">
+                <Form.Label>State</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="State"
+                  isInvalid={errors.state}
+                  {...register("state", {
+                    required: "This State Field Is Required",
+                  })}
+                  value="TamilNadu"
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors?.state?.message}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </div>
+            <div className="col-md-6">
+              <Form.Group controlId="formCity">
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="City"
+                  isInvalid={errors.city}
+                  {...register("city", {
+                    required: "This City Field Is Required",
+                  })}
+                  value="Trichy"
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors?.city?.message}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </div>
+            <div className="col-md-6">
+              <Form.Group controlId="formPostalCode">
+                <Form.Label>Postal Code</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Postal Code"
+                  isInvalid={errors.postalCode}
+                  {...register("postalCode", {
+                    required: "This Postal Code Field Is Required",
+                  })}
+                  onBlur={handleSubmit(onError)}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors?.postalCode?.message}
+                </Form.Control.Feedback>
+              </Form.Group>
             </div>
           </div>
         </div>
@@ -114,7 +225,9 @@ function OrderForm() {
             </label>
             <i className="icon_wallet"></i>
           </div>
-          <button className="btn_1 gradient full-width mb_5">submit</button>
+          <button className="btn_1 gradient full-width mb_5" ref={ref}>
+            submit
+          </button>
         </div>
       </div>
     </Form>

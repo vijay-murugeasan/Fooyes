@@ -19,6 +19,7 @@ import Error from "./ui/Error";
 import Order from "./features/order/Order";
 import SpinnerFullPage from "./ui/SpinnerFullPage";
 import ThankYou from "./features/order/ThankYou";
+import EmptyCart from "./features/order/EmptyCart";
 
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -36,6 +37,10 @@ function App() {
   const position = sessionPosition || statePosition;
 
   const length = Object.keys(position).length;
+
+  const cart = useSelector((state) => state.cart.cart);
+
+  const isCart = cart.length;
 
   const router = createBrowserRouter([
     {
@@ -83,11 +88,14 @@ function App() {
         },
         {
           path: "/order",
-          element: (
-            <Suspense fallback={<SpinnerFullPage />}>
-              <Order />
-            </Suspense>
-          ),
+          element:
+            isCart > 0 ? (
+              <Suspense fallback={<SpinnerFullPage />}>
+                <Order />
+              </Suspense>
+            ) : (
+              <EmptyCart />
+            ),
         },
         {
           path: "/thank-you",
