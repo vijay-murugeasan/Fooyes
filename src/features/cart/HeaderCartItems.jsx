@@ -36,20 +36,15 @@ function HeaderCartItems({ cart, setShowCart }) {
           <strong>Total </strong>
           <span>{formatCurrency(totalCartItemPrice)} </span>
         </div>
-        {/* <Link
+        <Link
           to="/order"
           className="btn_1 outline"
           onClick={() => setShowCart(false)}
         >
           View Cart
-        </Link> */}
-        <Link
-          to="/order"
-          className="btn_1"
-          onClick={() => setShowCart(false)}
-          style={{ color: "#fff" }}
-        >
-          View Cart
+        </Link>
+        <Link to="/order" className="btn_1" onClick={() => setShowCart(false)}>
+          Checkout
         </Link>
       </div>
     </>

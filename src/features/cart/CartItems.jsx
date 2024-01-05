@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -7,14 +8,8 @@ import {
   getTotalCartPrice,
 } from "../../services/redux/CartSlice";
 import { formatCurrency } from "../../utils/helpers";
-import "../../assets/css/detail-page.css";
-function CartItems({
-  height,
-  isShow,
-  handleShow,
-  isSubmitted,
-  setIsSubmitted,
-}) {
+
+function CartItems({ height, isShow, handleShow }) {
   const cart = useSelector(getCart);
   const { pathname } = useLocation();
 
@@ -28,6 +23,7 @@ function CartItems({
     e.preventDefault();
     handleShow(!isShow);
   }
+
   return (
     <>
       <div
@@ -71,28 +67,15 @@ function CartItems({
               Delivery fee <span>{formatCurrency(deliveryFee)}</span>
             </li>
             <li className="total">
-              Total
+              Total{" "}
               <span>{formatCurrency(totalCartItemPrice + deliveryFee)} </span>
             </li>
           </ul>
 
           <div className="btn_1_mobile">
-            {orderPath && (
-              <button
-                className="btn_1 gradient full-width mb_5"
-                onClick={() => {
-                  setIsSubmitted(true);
-                }}
-                // disabled={!isSubmitted}
-              >
-                Order Now
-              </button>
-            )}
-            {!orderPath && (
-              <Link to={url} className="btn_1 gradient full-width mb_5">
-                {orderBtnText}
-              </Link>
-            )}
+            <Link to={url} className="btn_1 gradient full-width mb_5">
+              {orderBtnText}
+            </Link>
             <div className="text-center">
               <small>No money charged on this steps </small>
             </div>
