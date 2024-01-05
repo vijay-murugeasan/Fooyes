@@ -24,8 +24,8 @@ function StartOrder() {
                   </figure>
                   <h3>Easly Order</h3>
                   <p>
-                    Faucibus ante, in porttitor ______ blandit et. Phasellus
-                    tincidunt _____ lectus sollicitudin.
+                    Order in for yourself or for the group, with no restrictions
+                    on order value
                   </p>
                 </div>
                 <div className="box_how">
@@ -40,8 +40,8 @@ function StartOrder() {
                   </figure>
                   <h3>Quick Delivery</h3>
                   <p>
-                    Maecenas pulvinar, risus in _________ dignissim, quam nisi
-                    hendrerit _____, id vestibulum.
+                    Experience Fooyes's superfast delivery for food delivered
+                    fresh & on time
                   </p>
                 </div>
               </div>
@@ -58,8 +58,8 @@ function StartOrder() {
                   </figure>
                   <h3>Enjoy Food</h3>
                   <p>
-                    Morbi convallis bibendum urna __ viverra. Maecenas quis
-                    consequat ______, a feugiat eros.
+                    Morbi convallis bibendum urna viverra. Maecenas quis
+                    consequat , a feugiat eros.
                   </p>
                 </div>
               </div>
@@ -82,13 +82,12 @@ function StartOrder() {
                 <h2>Start Ordering Now</h2>
               </div>
               <p className="lead">
-                Lorem ipsum dolor sit ____, consectetur adipiscing elit. Sed
-                _________ libero id nisi euismod, ___ porta est consectetur
-                deserunt.
+                Lorem ipsum dolor sit , consectetur adipiscing elit. Sed libero
+                id nisi euismod, porta est consectetur deserunt.
               </p>
               <p>
-                Duis aute irure dolor __ reprehenderit in voluptate velit ____
-                cillum dolore eu fugiat _____ pariatur.
+                Duis aute irure dolor reprehenderit in voluptate velit cillum
+                dolore eu fugiat pariatur.
               </p>
               <p>
                 <Link

@@ -2,12 +2,14 @@ import { useLocation } from "react-router-dom";
 
 function Footer() {
   const { pathname } = useLocation();
-  const pageIncludes = ["/home", "/contact"];
+  const pageIncludes = ["/home", "/", "/contact"];
+
+  console.log(pageIncludes.includes(pathname));
   return (
     <footer>
       <div
         className={`wave footer  ${
-          !pageIncludes.includes(pathname) ? "gray" : ""
+          pageIncludes.includes(pathname) ? "" : "gray"
         }`}
       ></div>
       <div className="container margin_60_40 fix_mobile">
@@ -19,10 +21,7 @@ function Footer() {
             <div className="collapse dont-collapse-sm links" id="collapse_1">
               <ul>
                 <li>
-                  <a href="help.html">Terms and Conditions </a>
-                </li>
-                <li>
-                  <a href="contacts.html">Privacy </a>
+                  <a href="/contact">Privacy </a>
                 </li>
               </ul>
             </div>
@@ -33,10 +32,7 @@ function Footer() {
             <div className="collapse dont-collapse-sm links" id="collapse_1">
               <ul>
                 <li>
-                  <a href="help.html">Help </a>
-                </li>
-                <li>
-                  <a href="contacts.html">Contacts </a>
+                  <a href="/contact">Contacts </a>
                 </li>
               </ul>
             </div>
@@ -44,7 +40,7 @@ function Footer() {
             <div className="collapse dont-collapse-sm links" id="collapse_2">
               <ul>
                 <li>
-                  <a href="listing-map.html">Top Categories </a>
+                  <a href="/restaurant">Top Categories </a>
                 </li>
               </ul>
             </div>

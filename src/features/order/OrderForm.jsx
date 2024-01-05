@@ -225,7 +225,7 @@ function OrderForm({ isSubmitted, setIsSubmitted }) {
             </label>
             <i className="icon_wallet"></i>
           </div>
-          <button className="btn_1 gradient full-width mb_5" ref={ref}>
+          <button className="btn_1 gradient full-width mb_5 d-none" ref={ref}>
             submit
           </button>
         </div>

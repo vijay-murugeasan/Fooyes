@@ -8,9 +8,11 @@ function Header() {
   const [scrollTopData, setScrollTopData] = useState("");
   const { pathname } = useLocation();
   const headerClass =
-    pathname === "/"
-      ? `header black_nav clearfix element_to_stick ${scrollTopData}`
+    pathname === "/" || pathname === "/contact"
+      ? `header clearfix element_to_stick ${scrollTopData}`
       : "header_in clearfix";
+  const homeClass = pathname === "/" || pathname === "/home" ? "black_nav" : "";
+  const logoClass = pathname === "/contact";
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -21,15 +23,14 @@ function Header() {
       }
     });
   }, []);
-
   const [mobileNav, setMobileNav] = useState(false);
 
   return (
-    <header className={headerClass}>
+    <header className={`${headerClass} ${homeClass}`}>
       <div className="container">
         <div id="logo">
           <Link to="/">
-            <Logo />
+            <Logo className={logoClass} sticky={scrollTopData} />
           </Link>
         </div>
         <div className={`layer ${mobileNav ? "layer-is-visible" : ""}`}></div>

@@ -1,7 +1,6 @@
-import LogoImg from "/img/logo_sticky.svg";
-
-function Logo() {
-  return <img src={LogoImg} alt="" />;
+function Logo({ className, sticky }) {
+  const logo = className && !sticky ? "logo" : "logo_sticky";
+  return <img src={`/img/${logo}.svg`} alt="" />;
 }
 
 export default Logo;

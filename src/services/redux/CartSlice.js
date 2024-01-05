@@ -5,7 +5,7 @@ const items =
         ? JSON.parse(window.sessionStorage.getItem("cartList"))
         : [];
 
-console.log(items)
+
 // adding this function to prevent repeat code 
 const setCartListFunc = (items) => {
     window.sessionStorage.setItem("cartList", JSON.stringify(items));
