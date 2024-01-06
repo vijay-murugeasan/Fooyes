@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { IMG_CDN_URL } from "../../services/constant";
 
 function Restaurant({ item }) {
-  // console.log(item);
   const {
     id,
     cloudinaryImageId,
@@ -33,7 +32,7 @@ function Restaurant({ item }) {
           </div>
         )}
         {cuisines && <em>{cuisines[0]} </em>}
-        {name && <h3>{name}</h3>}
+        {name && <h3 className="h3-text-overflow">{name}</h3>}
         {areaName && <small>{areaName} </small>}
         <ul>
           <li>

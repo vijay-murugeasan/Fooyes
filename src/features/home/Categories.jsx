@@ -60,7 +60,50 @@ function Categories() {
         <p>Cum doctus civibus efficiantur imperdiet deterruisset</p>
       </div>
 
-      {isLoading && <Spinner />}
+      {isLoading && (
+        <div className="owl-container" style={{ display: "flex", gap: "10px" }}>
+          <div
+            className="owl-item"
+            style={{
+              backgroundColor: "#E5E4E2",
+              width: "25%",
+              paddingBottom: "28%",
+            }}
+          ></div>
+          <div
+            className="owl-item"
+            style={{
+              backgroundColor: "#E5E4E2",
+              width: "25%",
+              paddingBottom: "28%",
+            }}
+          ></div>
+          <div
+            className="owl-item"
+            style={{
+              backgroundColor: "#E5E4E2",
+              width: "25%",
+              paddingBottom: "28%",
+            }}
+          ></div>
+          <div
+            className="owl-item"
+            style={{
+              backgroundColor: "#E5E4E2",
+              width: "25%",
+              paddingBottom: "28%",
+            }}
+          ></div>
+          <div
+            className="owl-item"
+            style={{
+              backgroundColor: "#E5E4E2",
+              width: "25%",
+              paddingBottom: "28%",
+            }}
+          ></div>
+        </div>
+      )}
       {!isLoading && (
         <OwlCarousel
           className="owl-carousel owl-theme categories_carousel"
