@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 function Footer() {
   const { pathname } = useLocation();
   const pageIncludes = ["/home", "/", "/contact"];
 
-  console.log(pageIncludes.includes(pathname));
+  const [collapseOne, setCollapseOne] = useState(true);
+  const [collapseTwo, setCollapseTwo] = useState(true);
+  const [collapseThree, setCollapseThree] = useState(true);
+  const [collapseFour, setCollapseFour] = useState(true);
+  const IsMobile = window.screen.width < 800;
   return (
     <footer>
       <div
@@ -14,30 +19,54 @@ function Footer() {
       ></div>
       <div className="container margin_60_40 fix_mobile">
         <div className="row">
-          <div className="col-lg-3 col-md-6">
+          <div
+            className={`col-lg-3 col-md-6 ${IsMobile ? "d-none" : "d-block"}`}
+          >
             <h3>© 2023 FooYes </h3>
 
             <h3 data-bs-target="#collapse_1">Legal</h3>
             <div className="collapse dont-collapse-sm links" id="collapse_1">
               <ul>
                 <li>
-                  <a href="/contact">Privacy </a>
+                  <span>Privacy</span>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="col-lg-3 col-md-6">
-            <h3 data-bs-target="#collapse_1">Quick Links</h3>
-            <div className="collapse dont-collapse-sm links" id="collapse_1">
+            <h3
+              data-bs-target="#collapse_1"
+              className={`${collapseOne ? "collapsed" : "opened"}`}
+              onClick={() => setCollapseOne(!collapseOne)}
+            >
+              Quick Links
+            </h3>
+            <div
+              className={` collapse dont-collapse-sm links ${
+                !collapseOne ? "show" : ""
+              }`}
+              id="collapse_1"
+            >
               <ul>
                 <li>
                   <a href="/contact">Contacts </a>
                 </li>
               </ul>
             </div>
-            <h3 data-bs-target="#collapse_2">Categories</h3>
-            <div className="collapse dont-collapse-sm links" id="collapse_2">
+            <h3
+              data-bs-target="#collapse_2"
+              className={`${collapseTwo ? "collapsed" : "opened"}`}
+              onClick={() => setCollapseTwo(!collapseTwo)}
+            >
+              Categories
+            </h3>
+            <div
+              className={` collapse dont-collapse-sm links ${
+                !collapseTwo ? "show" : ""
+              }`}
+              id="collapse_2"
+            >
               <ul>
                 <li>
                   <a href="/restaurant">Top Categories </a>
@@ -46,8 +75,19 @@ function Footer() {
             </div>
           </div>
           <div className="col-lg-3 col-md-6">
-            <h3 data-bs-target="#collapse_3">Contacts</h3>
-            <div className="collapse dont-collapse-sm contacts" id="collapse_3">
+            <h3
+              data-bs-target="#collapse_3"
+              className={`${collapseThree ? "collapsed" : "opened"}`}
+              onClick={() => setCollapseThree(!collapseThree)}
+            >
+              Contacts
+            </h3>
+            <div
+              className={` collapse dont-collapse-sm contacts ${
+                !collapseThree ? "show" : ""
+              }`}
+              id="collapse_3"
+            >
               <ul>
                 <li>
                   <i className="icon_house_alt"></i>97845 Baker st. 567 <br />
@@ -64,16 +104,22 @@ function Footer() {
             </div>
           </div>
           <div className="col-lg-3 col-md-6">
-            <h3 data-bs-target="#collapse_4">Keep in touch</h3>
-            <div className="collapse dont-collapse-sm" id="collapse_4">
+            <h3
+              data-bs-target="#collapse_4"
+              className={`${collapseFour ? "collapsed" : "opened"}`}
+              onClick={() => setCollapseFour(!collapseFour)}
+            >
+              Keep in touch
+            </h3>
+            <div
+              className={` collapse dont-collapse-sm links ${
+                !collapseFour ? "show" : ""
+              }`}
+              id="collapse_4"
+            >
               <div id="newsletter">
                 <div id="message-newsletter"></div>
-                <form
-                  method="post"
-                  action="assets/newsletter.php"
-                  name="newsletter_form"
-                  id="newsletter_form"
-                >
+                <form method="post" name="newsletter_form" id="newsletter_form">
                   <div className="form-group">
                     <input
                       type="email"
@@ -84,7 +130,7 @@ function Footer() {
                       value=""
                       readOnly
                     />
-                    <button type="submit" id="submit-newsletter">
+                    <button type="submit" id="submit-newsletter" disabled>
                       <i className="arrow_carrot-right"></i>
                     </button>
                   </div>
@@ -135,55 +181,22 @@ function Footer() {
             </div>
           </div>
         </div>
-        {/* <!-- /row--> */}
         <hr />
-        {/* <div className="row add_bottom_25">
-          <div className="col-lg-6">
-            <ul className="footer-selector clearfix">
-              <li>
-                <div className="styled-select lang-selector">
-                  <select>
-                    <option value="English">English</option>
-                    <option value="French">French</option>
-                    <option value="Spanish">Spanish</option>
-                    <option value="Russian">Russian</option>
-                  </select>
-                </div>
-              </li>
-              <li>
-                <div className="styled-select currency-selector">
-                  <select name="currency">
-                    <option value="US Dollars">US Dollars</option>
-                    <option value="Euro">Euro</option>
-                  </select>
-                </div>
-              </li>
-              <li>
-                <img
-                  src="/img/cards_all.svg"
-                  data-src="img/cards_all.svg"
-                  alt=""
-                  width="230"
-                  height="35"
-                  className="lazy"
-                />
-              </li>
-            </ul>
-          </div>
+        <div className={`row add_bottom_25 ${IsMobile ? "show" : "d-none"}`}>
           <div className="col-lg-6">
             <ul className="additional_links">
               <li>
-                <a href="#0">Terms and conditions </a>
+                <span>Terms and conditions </span>
               </li>
               <li>
-                <a href="#0">Privacy </a>
+                <span>Privacy </span>
               </li>
               <li>
-                <span>© FooYes </span>
+                <span>© 2024 FooYes </span>
               </li>
             </ul>
           </div>
-        </div> */}
+        </div>
       </div>
     </footer>
   );
