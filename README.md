@@ -20,7 +20,7 @@ Under Development (Updates In progress...)
   
 - **Order Page (Redux)**: The order page is combined with checkout and cart. in checkout for now user only selects the order with cash option. in the future, I will implement credit card payment
 
-- **Contact Page**: This page includes a form and static map
+- **Contact Page**: This page includes a contact form and location map
   
 ## Technologies Used
 
