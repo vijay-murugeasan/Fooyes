@@ -2,7 +2,7 @@
 Welcome to the Food Ordering Website project! Fooyes Website created with React.js, Redux, HTML, and Bootstrap for ordering food online. The website includes features such as user authentication, a home page with a Top restaurant list, Restaurant listing and detail pages, an order page with checkout details, and a shopping cart.
 I bought a Fooyes template and converted it from HTML Bootstrap into React js
 <br/>
-Under Development (Updates In progress...)
+Under Development ( Updates In progress... )
 
 ## Features
 - **Location Page**: Get the user's location to show a restaurant based on the user's location
