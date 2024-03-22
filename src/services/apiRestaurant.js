@@ -22,12 +22,13 @@ export async function getRestaurants() {
         if (!data.ok) throw Error();
 
         const json = await data.json();
+        const result = JSON.parse(json.contents);
 
         // was showing an error of data fetching because sometime data coming from cards[1] sometime cards[2] and different on other times so me make a function and check which value of i gives data in cards[i]
         async function checkJsonData(jsonData) {
             for (let i = 0; i < jsonData?.data?.cards.length; i++) {
                 // initialize checkData for Swiggy Restaurant data
-                let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+                let checkData = result?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
                 // if checkData is not undefined then return it
                 if (checkData !== undefined) {
                     return checkData;
@@ -35,8 +36,7 @@ export async function getRestaurants() {
             }
         }
         // call the checkJsonData() function which return Swiggy Restaurant data
-        const resData = await checkJsonData(json);
-        // console.log(resData)
+        const resData = await checkJsonData(result);
         return resData
     } catch (error) {
         console.log(error);
@@ -54,19 +54,20 @@ export async function getCategories() {
         if (!data.ok) throw Error();
 
         const json = await data.json();
+        const result = JSON.parse(json.contents);
 
         async function checkJsonData(jsonData) {
             for (let i = 0; i < jsonData?.data?.cards.length; i++) {
                 // initialize checkData for Swiggy Restaurant data
-                if (json?.data?.cards[i]?.card?.card?.id === 'whats_on_your_mind') {
-                    const checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.info;
+                if (result?.data?.cards[i]?.card?.card?.id === 'whats_on_your_mind') {
+                    const checkData = result?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.info;
                     return (checkData !== undefined) ? checkData : [];
                 }
             }
         }
 
         // call the checkJsonData() function which return Swiggy Restaurant data
-        const itemData = await checkJsonData(json);
+        const itemData = await checkJsonData(result);
         // console.log(itemData)
         return itemData
     } catch (error) {
@@ -83,6 +84,7 @@ export async function UseGetPlace(url) {
 
     try {
         const data = await fetch(search_API_URL + url);
+        console.log('data', data)
         if (!data.ok) throw Error();
 
         const json = await data.json();
@@ -113,9 +115,10 @@ export const UseRestaurant = (resId) => {
                 throw new Error(err);
             } else {
                 const json = await response.json();
+                const result = JSON.parse(json.contents);
                 // Set restaurant data
                 const restaurantData =
-                    json?.data?.cards
+                    result?.data?.cards
                         ?.map((x) => x.card)
                         ?.find((x) => x && x.card["@type"] === RESTAURANT_TYPE_KEY)?.card
                         ?.info || null;
@@ -123,7 +126,7 @@ export const UseRestaurant = (resId) => {
 
                 // Set menu item data
                 const menuItemsData =
-                    json?.data?.cards
+                    result?.data?.cards
                         .find((x) => x.groupedCard)
                         ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map(
                             (x) => x.card?.card

@@ -37,11 +37,12 @@ function AutocompleteLocation() {
         signal: controller.signal,
       });
       const res = await data.json();
+      const result = JSON.parse(res.contents);
       myOptions.length = 0;
-      for (var i = 0; i < res.data.length; i++) {
+      for (var i = 0; i < result.data.length; i++) {
         myOptions.push({
-          label: res.data[i].description,
-          id: res.data[i].place_id,
+          label: result.data[i].description,
+          id: result.data[i].place_id,
         });
       }
       // console.log(res?.data);
@@ -51,13 +52,14 @@ function AutocompleteLocation() {
   async function getGeoCode(id) {
     const data = await fetch(place_ID + id);
     const res = await data.json();
-    // console.log(res);
+    const result = JSON.parse(res.contents);
+
     select.length = 0;
-    for (var i = 0; i < res.data.length; i++) {
+    for (var i = 0; i < result.data.length; i++) {
       select.push({
-        label: res.data[i].geometry.location,
-        id: res.data[i].place_id,
-        address: res.data[i].formatted_address,
+        label: result.data[i].geometry.location,
+        id: result.data[i].place_id,
+        address: result.data[i].formatted_address,
       });
     }
     // console.log(res?.data);
@@ -104,7 +106,7 @@ function AutocompleteLocation() {
             }
           }}
           onChange={(e, value) => {
-            // console.log(value);
+            console.log(value);
             getGeoCode(value?.id);
           }}
           getOptionLabel={(option) =>
