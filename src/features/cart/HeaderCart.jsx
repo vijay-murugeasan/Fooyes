@@ -35,7 +35,11 @@ function HeaderCart() {
   return (
     <ul id="top_menu">
       <li>
-        <div className="dropdown dropdown-cart" ref={ref}>
+        <div
+          className="dropdown dropdown-cart"
+          style={{ border: "none" }}
+          ref={ref}
+        >
           <Link
             className={`cart_bt ${showCart ? "show" : ""}`}
             onClick={handleShowCart}

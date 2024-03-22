@@ -2788,6 +2788,10 @@ ul#top_menu li a.login:before {
 }
 .dropdown-cart .dropdown-menu ul,
 .dropdown.user .dropdown-menu ul {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 150px;
+  margin-bottom: 10px;
   padding: 0;
   list-style: none;
 }

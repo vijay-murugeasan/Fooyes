@@ -46,7 +46,10 @@ function CartItems({
           </a>
         </div>
         <div className="main">
-          <ul className="clearfix">
+          <ul
+            className="clearfix"
+            style={{ maxHeight: "250px", overflow: "auto" }}
+          >
             {cart.map((item, index) => {
               return (
                 <li key={item.id}>
