@@ -139,7 +139,7 @@
   animation: checkmark-circle 0.6s ease-in-out backwards;
 }
 #register_bg {
-  background: #ccc url(img/Lunch1.jpg) center center no-repeat fixed;
+  background: #ccc url(/img/Lunch1.jpg) center center no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
