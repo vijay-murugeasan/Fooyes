@@ -5,7 +5,7 @@ function EmptyCart({ cart, setShowCart }) {
     <div className="total_drop">
       <p className="text-center">No Items In this Cart</p>
       <Link
-        to="/restaurant"
+        to="/restaurants"
         className="btn_1 outline"
         onClick={() => setShowCart(false)}
       >

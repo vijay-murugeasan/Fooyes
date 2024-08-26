@@ -1,6 +1,8 @@
 import { Collapse } from "react-bootstrap";
 
 function FilterCollapse({ open, category, handleChange }) {
+  // console.log(category.length);
+  // console.log(new Set(category));
   const firstGrid = category?.slice(0, 15);
   const secondGrid = category?.slice(15, 30);
   const thirdGrid = category?.slice(30, category.length);

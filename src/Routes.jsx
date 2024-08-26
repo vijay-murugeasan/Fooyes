@@ -49,7 +49,7 @@ function Routes({ length }) {
           ),
         },
         {
-          path: "/restaurant",
+          path: "/restaurants",
           element: (
             <Suspense fallback={<Spinner />}>
               <Restaurants />

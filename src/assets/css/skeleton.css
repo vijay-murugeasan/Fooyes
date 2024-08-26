@@ -1,0 +1,34 @@
+.figureImgRes {
+  background-color: "#E5E4E2" !important;
+  width: "30%" !important;
+  padding-bottom: "30%" !important;
+}
+
+.resCuisine {
+  background-color: "#E5E4E2" !important;
+  width: "30%" !important;
+  height: "10px" !important;
+  display: "block" !important;
+}
+.resName {
+  background-color: "#E5E4E2" !important;
+  width: "55%" !important;
+  margin-top: "2%" !important;
+  padding-top: "6%" !important;
+  display: "block" !important;
+}
+
+.resArea {
+  background-color: "#E5E4E2" !important;
+  width: "45%" !important;
+  margin-top: "2%" !important;
+  padding-top: "6%" !important;
+  display: "block" !important;
+}
+.resOffer {
+  background-color: "#E5E4E2" !important;
+  width: "55%" !important;
+  margin-top: "8%" !important;
+  padding-top: "6%" !important;
+  display: "block" !important;
+}

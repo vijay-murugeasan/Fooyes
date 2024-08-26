@@ -1,4 +1,4 @@
-import { IMG_CDN_URL } from "../../services/constant";
+import { IMG_CDN_URL } from "../../utils/constant";
 
 import { Link } from "react-router-dom";
 

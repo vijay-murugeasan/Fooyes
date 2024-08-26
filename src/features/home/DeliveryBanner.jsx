@@ -15,7 +15,7 @@ function DeliveryBanner() {
           <small>FooYes Delivery </small>
           <h3>We Deliver to your home </h3>
           <p>Enjoy a tasty food few minutes!</p>
-          <Link to="/restaurant" className="btn_1 gradient">
+          <Link to="/restaurants" className="btn_1 gradient">
             Start Now!
           </Link>
         </div>

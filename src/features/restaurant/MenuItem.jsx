@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { IMG_CDN_URL } from "../../services/constant";
+import { IMG_CDN_URL } from "../../utils/constant";
 import {
   addItem,
   decreaseItemQuantity,

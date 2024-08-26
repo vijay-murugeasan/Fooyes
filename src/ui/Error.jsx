@@ -15,6 +15,7 @@ function Error() {
               </p>
               <Link to="/" />
               {/* <p>{error.data || error.message}</p> */}
+              {/* <p>{error}</p> */}
             </div>
           </div>
         </div>

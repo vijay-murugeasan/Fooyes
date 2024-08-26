@@ -1,7 +1,7 @@
 // import PlaceHolder from "../../assets/img/location_list_placeholder.png";
 
 import { Link } from "react-router-dom";
-import { IMG_CDN_URL } from "../../services/constant";
+import { IMG_CDN_URL } from "../../utils/constant";
 
 function Restaurant({ item }) {
   const {

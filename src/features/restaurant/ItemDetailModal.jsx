@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import { IMG_thumb_CDN_URL } from "../../services/constant";
+import { IMG_thumb_CDN_URL } from "../../utils/constant";
 import { formatCurrency } from "../../utils/helpers";
 
 function ItemDetailModal({ show, handleClose, itemCards }) {

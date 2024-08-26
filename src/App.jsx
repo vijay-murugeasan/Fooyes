@@ -27,6 +27,9 @@ const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 const Location = lazy(() => import("./pages/Location"));
 const Restaurant = lazy(() => import("./pages/Restaurant"));
 const Restaurants = lazy(() => import("./pages/Restaurants"));
+const RestaurantsSkelton = lazy(() =>
+  import("./pages/skelton/restaurants/Restaurants")
+);
 
 // import Help from "./pages/Help";
 // import Menu from "./pages/Menu";
@@ -72,9 +75,9 @@ function App() {
           ),
         },
         {
-          path: "/restaurant",
+          path: "/restaurants",
           element: (
-            <Suspense fallback={<Spinner />}>
+            <Suspense fallback={<RestaurantsSkelton />}>
               <Restaurants />
             </Suspense>
           ),

@@ -7,7 +7,7 @@ import Header from "../features/restaurants/Header";
 import TypeDelivery from "../features/restaurants/TypeDelivery";
 import FilterCollapse from "../features/restaurants/FilterCollapse";
 import RestaurantList from "../features/restaurants/RestaurantList";
-import Loader from "../ui/Loader";
+import RestaurantsSkelton from "./skelton/restaurants/Restaurants";
 
 import "../assets/css/listing.css";
 // import { Collapse } from "react-bootstrap";
@@ -95,7 +95,7 @@ export default function Restaurants() {
   if (!restaurant) return "something went Wrong";
 
   return restaurant?.length === 0 ? (
-    <Loader />
+    <RestaurantsSkelton />
   ) : (
     <main>
       <Header

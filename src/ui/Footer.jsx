@@ -69,7 +69,7 @@ function Footer() {
             >
               <ul>
                 <li>
-                  <a href="/restaurant">Top Categories </a>
+                  <a href="/restaurants">Top Categories </a>
                 </li>
               </ul>
             </div>

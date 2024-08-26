@@ -66,7 +66,7 @@ function StartOrder() {
             </div>
             <p className="text-center mt-3 d-block d-lg-none">
               <Link
-                to="/restaurant"
+                to="/restaurants"
                 className="btn_1 medium gradient pulse_bt mt-2"
               >
                 Start Order
@@ -91,7 +91,7 @@ function StartOrder() {
               </p>
               <p>
                 <Link
-                  to="/restaurant"
+                  to="/restaurants"
                   className="btn_1 medium gradient pulse_bt mt-2"
                 >
                   Start Order

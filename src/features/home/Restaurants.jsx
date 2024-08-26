@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getRestaurants } from "../../services/apiRestaurant";
 import DeliveryBanner from "./DeliveryBanner";
-import Spinner from "../../ui/Spinner";
 import Restaurant from "./Restaurant";
+import { RestaurantCard } from "./skelton/RestaurantCard";
 
 function Restaurants() {
   const [restaurants, setRestaurants] = useState([]);
@@ -32,11 +32,11 @@ function Restaurants() {
           </span>
           <h2>Top Rated Restaurants</h2>
           <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
-          <Link to="/restaurant">View All &rarr;</Link>
+          <Link to="/restaurants">View All &rarr;</Link>
         </div>
         <div className="row add_bottom_25">
-          {isLoading && <Spinner />}
-          {!isLoading && (
+          {isLoading && <RestaurantCard />}
+          {!isLoading && restaurants && (
             <div className="col-lg-6">
               <div className="list_home">
                 <ul>
@@ -50,7 +50,7 @@ function Restaurants() {
               </div>
             </div>
           )}
-          {!isLoading && (
+          {!isLoading && restaurants && (
             <div className="col-lg-6">
               <div className="list_home">
                 <ul>

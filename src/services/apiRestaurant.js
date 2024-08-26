@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { swiggy_menu_api_URL, MENU_API, MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY, search_API_URL } from "./constant"
+import { swiggy_menu_api_URL, MENU_API, MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY, search_API_URL } from "../utils/constant"
 // const RestaurantAPI = "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
 function getPosition() {
     const getPosition = window.sessionStorage.getItem("position");

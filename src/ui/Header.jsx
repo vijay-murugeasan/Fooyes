@@ -68,7 +68,7 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/restaurant" onClick={() => setMobileNav(false)}>
+              <Link to="/restaurants" onClick={() => setMobileNav(false)}>
                 Restaurants
               </Link>
             </li>
