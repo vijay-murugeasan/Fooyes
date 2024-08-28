@@ -10,7 +10,7 @@ import Banner from "../features/restaurant/Banner";
 import MenuNav from "../features/restaurant/MenuNav";
 import MenuList from "../features/restaurant/MenuList";
 import Cart from "../features/cart/Cart";
-
+import RestaurantsSkelton from "./skelton/restaurants/detail/RestaurantDetail";
 import "../assets/css/detail-page.css";
 
 export default function Restaurant() {
@@ -18,10 +18,9 @@ export default function Restaurant() {
   const cart = useSelector(getCart);
   const [restaurant, menuItems] = UseRestaurant(id);
   const [height, setHeight] = useState(null);
-
-  return !restaurant ? (
-    <SpinnerFullPage />
-  ) : (
+  if (!restaurant) return <RestaurantsSkelton />;
+  
+  return (
     <main>
       <Banner restaurant={restaurant} />
       <MenuNav item={menuItems} handleHeight={setHeight} height={height} />

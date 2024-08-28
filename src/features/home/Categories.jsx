@@ -5,7 +5,7 @@ import OwlCarousel from "react-owl-carousel";
 import { getCategories } from "../../services/apiRestaurant";
 import { IMG_CATEGORY_URL } from "../../utils/constant";
 import Spinner from "../../ui/Spinner";
-import { CategoriesSkelton } from "./skelton/Categories";
+import CategoriesSkelton from "./skelton/Categories";
 
 function Categories() {
   const [category, setCategory] = useState([]);

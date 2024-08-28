@@ -24,7 +24,7 @@ function Header({
     const filterBySearch = resData?.filter((item) =>
       item.info.name.toLowerCase().includes(searchVal.toLowerCase())
     );
-    console.log(filterBySearch);
+    // console.log(filterBySearch);
     handleRestaurantData(filterBySearch);
   }
   return (

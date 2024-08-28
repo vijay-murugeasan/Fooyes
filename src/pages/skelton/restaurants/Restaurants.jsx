@@ -4,7 +4,7 @@ import ItemCard from "./ItemCard";
 
 const Restaurants = () => {
   return (
-    <>
+    <main>
       <div className="page_header element_to_stick">
         <div className="container">
           <div className="row">
@@ -60,7 +60,7 @@ const Restaurants = () => {
             })}
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

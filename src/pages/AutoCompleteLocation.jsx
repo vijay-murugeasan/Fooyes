@@ -31,7 +31,7 @@ function AutocompleteLocation() {
 
   async function getPlaceRes(addressVal) {
     const strLen = addressVal.length;
-    if (strLen > 2) {
+    if (strLen > 3) {
       const controller = new AbortController();
       const data = await fetch(search_API_URL + addressVal, {
         signal: controller.signal,

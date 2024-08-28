@@ -14,12 +14,14 @@ import { useSelector } from "react-redux";
 import { loader as restaurantLoader } from "./pages/Restaurants";
 import { action as getLocation } from "./pages/Location";
 import AppLayout from "./ui/AppLayout";
-import Spinner from "./ui/Spinner";
+// import Spinner from "./ui/Spinner";
 import Error from "./ui/Error";
 import Order from "./features/order/Order";
 import SpinnerFullPage from "./ui/SpinnerFullPage";
 import ThankYou from "./features/order/ThankYou";
 import EmptyCart from "./features/order/EmptyCart";
+import HomeSkimmer from "./pages/skelton/home/HomeSkimmer";
+import LocationSkimmer from "./pages/skelton/location/LocationSkimmer";
 
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -29,6 +31,12 @@ const Restaurant = lazy(() => import("./pages/Restaurant"));
 const Restaurants = lazy(() => import("./pages/Restaurants"));
 const RestaurantsSkelton = lazy(() =>
   import("./pages/skelton/restaurants/Restaurants")
+);
+const RestaurantsDetailSkelton = lazy(() =>
+  import("./pages/skelton/restaurants/detail/RestaurantDetail")
+);
+const ContactSkimmer = lazy(() =>
+  import("./pages/skelton/contact/ContactSkimmer")
 );
 
 // import Help from "./pages/Help";
@@ -44,23 +52,22 @@ function App() {
   const cart = useSelector((state) => state.cart.cart);
 
   const isCart = cart.length;
-
   const router = createBrowserRouter([
     {
       path: "/",
       element:
         length > 0 ? (
-          <Suspense fallback={<SpinnerFullPage />}>
+          <Suspense fallback={<HomeSkimmer />}>
             <AppLayout />
           </Suspense>
         ) : (
-          <Navigate to="/location" replace={true} />
+          <Navigate to="/location" replace />
         ),
       children: [
         {
           path: "/",
           element: (
-            <Suspense fallback={<SpinnerFullPage />}>
+            <Suspense fallback={<HomeSkimmer />}>
               <Home />
             </Suspense>
           ),
@@ -69,7 +76,7 @@ function App() {
         {
           path: "/contact",
           element: (
-            <Suspense fallback={<SpinnerFullPage />}>
+            <Suspense fallback={<ContactSkimmer />}>
               <Contact />
             </Suspense>
           ),
@@ -86,7 +93,11 @@ function App() {
         },
         {
           path: "/restaurant/:id",
-          element: <Restaurant />,
+          element: (
+            <Suspense fallback={<RestaurantsDetailSkelton />}>
+              <Restaurant />
+            </Suspense>
+          ),
           errorElement: <Error />,
         },
         {
@@ -119,7 +130,7 @@ function App() {
       path: "/location",
       element:
         length === 0 ? (
-          <Suspense fallback={<SpinnerFullPage />}>
+          <Suspense fallback={<LocationSkimmer />}>
             <Location />
           </Suspense>
         ) : (

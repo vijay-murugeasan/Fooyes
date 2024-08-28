@@ -84,7 +84,7 @@ export async function UseGetPlace(url) {
 
     try {
         const data = await fetch(search_API_URL + url);
-        console.log('data', data)
+        // console.log('data', data)
         if (!data.ok) throw Error();
 
         const json = await data.json();
@@ -105,7 +105,7 @@ export const UseRestaurant = (resId) => {
     const [lat, lng] = getPosition()
     useEffect(() => {
         getRestaurantInfo(); // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
-    }, []);
+    }, [resId]);
 
     async function getRestaurantInfo() {
         try {

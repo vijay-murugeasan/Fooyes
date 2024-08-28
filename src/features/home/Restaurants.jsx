@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getRestaurants } from "../../services/apiRestaurant";
 import DeliveryBanner from "./DeliveryBanner";
 import Restaurant from "./Restaurant";
-import { RestaurantCard } from "./skelton/RestaurantCard";
+import RestaurantCard from "./skelton/RestaurantCard";
 
 function Restaurants() {
   const [restaurants, setRestaurants] = useState([]);

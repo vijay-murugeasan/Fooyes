@@ -92,11 +92,10 @@ export default function Restaurants() {
     setCuisineKey([...cuisineKey, e.target.value]);
   }
   const renderData = searchVal === "" ? restaurant : restaurantData;
-  if (!restaurant) return "something went Wrong";
+  // if (!restaurant) return "something went Wrong";
+  if (!restaurant) return <RestaurantsSkelton />;
 
-  return restaurant?.length === 0 ? (
-    <RestaurantsSkelton />
-  ) : (
+  return (
     <main>
       <Header
         restaurants={restaurant}

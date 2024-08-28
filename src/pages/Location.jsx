@@ -16,7 +16,7 @@ function Location() {
           </div>
           <div className="divider"></div>
 
-          <AutoCompleteLocation></AutoCompleteLocation>
+          <AutoCompleteLocation />
 
           <h5>POPULAR CITIES IN INDIA</h5>
           <p>

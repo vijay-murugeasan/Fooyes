@@ -1653,6 +1653,10 @@ a:focus {
   text-decoration: none;
   outline: none;
 }
+
+.h-625 {
+  height: 625px !important;
+}
 @media (min-width: 1410px) {
   .container {
     max-width: 1320px;

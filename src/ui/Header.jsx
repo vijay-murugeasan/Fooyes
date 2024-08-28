@@ -6,27 +6,27 @@ import HeaderCart from "../features/cart/HeaderCart";
 
 function Header() {
   const [scrollTopData, setScrollTopData] = useState("");
+  const [headerHome, setHeaderHome] = useState("");
+  const [headerClass, setHeaderClass] = useState("");
   const { pathname } = useLocation();
-  const headerClass =
-    pathname === "/" || pathname === "/contact"
-      ? `header clearfix element_to_stick ${scrollTopData}`
-      : "header_in clearfix";
-  const homeClass = pathname === "/" || pathname === "/home" ? "black_nav" : "";
+
   const logoClass = pathname === "/contact";
 
   useEffect(() => {
+    pathname === "/" || pathname === "/contact"
+      ? setHeaderClass(`header element_to_stick ${scrollTopData}`)
+      : setHeaderClass("header_in");
+    pathname === "/" || pathname === "/home"
+      ? setHeaderHome("black_nav")
+      : setHeaderHome("");
     window.addEventListener("scroll", () => {
-      if (window.scrollY < 15) {
-        setScrollTopData("");
-      } else {
-        setScrollTopData("sticky");
-      }
+      window.scrollY < 15 ? setScrollTopData("") : setScrollTopData("sticky");
     });
-  }, []);
+  }, [pathname, scrollTopData]);
   const [mobileNav, setMobileNav] = useState(false);
 
   return (
-    <header className={`${headerClass} ${homeClass}`}>
+    <header className={`clearfix ${headerClass} ${headerHome}`}>
       <div className="container">
         <div id="logo">
           <Link to="/">

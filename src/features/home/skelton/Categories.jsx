@@ -1,6 +1,6 @@
 import { Skeleton } from "@mui/material";
 
-export const CategoriesSkelton = () => {
+const CategoriesSkelton = () => {
   return (
     <div className="owl-container" style={{ display: "flex", gap: "10px" }}>
       {Array.from(new Array(7), (val, index) => {
@@ -18,3 +18,5 @@ export const CategoriesSkelton = () => {
     </div>
   );
 };
+
+export default CategoriesSkelton;

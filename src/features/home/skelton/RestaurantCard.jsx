@@ -1,6 +1,6 @@
 import { Skeleton } from "@mui/material";
-
-export const RestaurantCard = () => {
+import "../../../assets/css/home.css";
+const RestaurantCard = () => {
   return (
     <div className="row add_bottom_25">
       <div className="col-lg-6">
@@ -88,3 +88,4 @@ export const RestaurantCard = () => {
     </div>
   );
 };
+export default RestaurantCard;
